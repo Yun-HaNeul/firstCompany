@@ -93,6 +93,99 @@ body {
     background: white;
     transition: .35s;
 }
+#header.navOn .logo a{
+    background-image: url("../../../img/logo/nav_logo.svg");
+    transition: .35s;
+}
+#header.navOn .burger .bar {
+    background: white;
+    transition: .35s;
+}
+#header.navOn .burger .bar:nth-child(2) {
+    transform: translateY(-12.5px) rotateZ(-135deg);
+}
+#header.navOn .burger .bar:nth-child(1) {
+    transform: rotateZ(135deg);
+}
+#header .burger.close .bar:nth-child(2) {
+    transform: translateY(0) rotateZ(0);
+}
+#header .burger.close .bar:nth-child(1) {
+    transform: rotateZ(0);
+}
+/* nav */
+.nav {
+    position: fixed;
+    left: 100%;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--point-color);
+    z-index: 9998;
+    transition: 1s ease-in-out;
+}
+.nav .nav_visual {
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.nav .nav_visual .inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav .nav_visual .nav_listWrap .nav_list {
+    position: relative;
+    left: 0;
+    font: 8rem "noto_B";
+    margin-bottom: 9rem;
+    transition: 0.35s ease-in;
+}
+.nav .nav_visual .nav_listWrap .nav_list::before {
+    content: "";
+    position: absolute;
+    left: -13rem;
+    top: 50%;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    background: white;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: 0.35s ease-in;
+}
+.nav .nav_visual .nav_listWrap .nav_list:hover {
+    left: 10%;
+}
+.nav .nav_visual .nav_listWrap .nav_list:hover::before {
+    left: -5rem;
+    opacity: 1;
+}
+.nav .nav_visual .nav_info {
+    align-self: flex-end;
+    margin-bottom: 20%;
+}
+.nav .nav_visual .nav_info > p {
+    width: 60%;
+    font-size: 4rem;
+    line-height: 1.5;
+}
+.nav_copy {
+    position: absolute;
+    right: 2.5rem;
+    bottom: 6.5rem;
+    color: white;
+    font-size: 3rem;
+    writing-mode: vertical-lr;
+}
+#header.navOn + .nav {
+    left: 0;
+}
+
 /* main */
 .section {
     padding: 16rem 0;
@@ -130,12 +223,14 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 30% 30%;
-    animation: img 1s linear forwards;
+    
 }
-@keyframes img {
+@keyframes imgs {
     100% {background-position: 50% 50%;}
 }
-
+section.on .busi_img .img {
+    animation: imgs 1s linear forwards;
+}
 .todo .todo_box ul li.todo_item {
 
     color: var(--point-color);
@@ -170,11 +265,11 @@ body {
     top: 0;
     background: var(--point-color);
  }
-.todo.on .img {
-    animation: img 1s .6s linear forwards;
+section.on .img {
+    animation: img 1s .9s linear forwards;
 }
-.todo.on .img::after {
-    animation: imgBox 0.5s .3s cubic-bezier(0.6, 0.08, 0.23, 0.88) forwards;
+section.on .img::after {
+    animation: imgBox 0.5s .6s cubic-bezier(0.6, 0.08, 0.23, 0.88) forwards;
 }
  @keyframes imgBox {
     to {left: 100%;}

@@ -14,6 +14,9 @@
     font-family: "outFit_B";
     src: url("../../../assets/Outfit-Bold.ttf");
 }
+/* *{
+    border: 1px solid red;
+} */
 /* Common */
 :root {
     --point-color:  #FF7F00;
@@ -39,6 +42,83 @@ html, body {
     font-size: 3.4rem;
     line-height: 1.5;
     padding-left: 10.677083vw;
+}
+.form_content.error{
+    border-bottom: 3px solid var(--point-color);
+}
+.form_content.error input{
+    border-bottom: none;
+}
+.form.headDesc.error{
+    color: var(--point-color);
+    font-weight: bold;
+}
+/* popup */
+div.popup {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 10000;
+    display: none;
+}
+div.popup.on{
+    display: flex;
+}
+div.popup h2{
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+div.popup span{
+    font-size: 1.4rem;
+    color: var(--sub-color);
+}
+div.popup div.popup_pcon{
+    min-width: 280px;
+    align-self: center;
+    background: #fff;
+    margin: 0 auto;
+    position: relative;
+    padding: 10rem 4vw;
+}
+div.popup_pcon div.pcon_close{
+    position: absolute;
+    right: 5rem;
+    top: 6rem;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+}
+div.pcon_close span{
+    display: block;
+    background: var(--text-color);
+    width: 3rem;
+    height: 2px;
+}
+div.pcon_close span:nth-child(1){
+    transform:rotate(45deg) translateY(1px);
+}
+div.pcon_close span:nth-child(2){
+    transform:rotate(-45deg) translateY(-2.6px);
+    
+}
+div.popup_pcon_con{
+    margin-bottom: 3.8rem;
+}
+div.popup div.popup_pcon_con.con1 h2{
+    margin-bottom: 2rem;
+}
+button.p_agree{
+    display: block;
+    background: #FF7F00;
+    margin: 0 auto;
+    width: 20rem;
+    height: 5rem;
+    border-radius:4rem;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
 /* header */
 #header {
@@ -81,6 +161,99 @@ html, body {
     background: white;
     transition: .35s;
 }
+#header.navOn .logo a{
+    background-image: url("../../../img/logo/nav_logo.svg");
+    transition: .35s;
+}
+#header.navOn .burger .bar {
+    background: white;
+    transition: .35s;
+}
+#header.navOn .burger .bar:nth-child(2) {
+    transform: translateY(-12.5px) rotateZ(-135deg);
+}
+#header.navOn .burger .bar:nth-child(1) {
+    transform: rotateZ(135deg);
+}
+#header .burger.close .bar:nth-child(2) {
+    transform: translateY(0) rotateZ(0);
+}
+#header .burger.close .bar:nth-child(1) {
+    transform: rotateZ(0);
+}
+@keyframes header {
+    to {opacity: 1; transform: translateY(0);}
+}
+/* nav */
+.nav {
+    position: fixed;
+    left: 100%;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--point-color);
+    z-index: 9998;
+    transition: 1s ease-in-out;
+}
+.nav .nav_visual {
+    width: 100%;
+    height: 100%;
+}
+.nav .nav_visual .inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.nav .nav_visual .nav_listWrap .nav_list {
+    position: relative;
+    left: 0;
+    font: 8rem "noto_B";
+    margin-bottom: 9rem;
+    transition: 0.35s ease-in;
+}
+.nav .nav_visual .nav_listWrap .nav_list::before {
+    content: "";
+    position: absolute;
+    left: -13rem;
+    top: 50%;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    background: white;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: 0.35s ease-in;
+}
+.nav .nav_visual .nav_listWrap .nav_list:hover {
+    left: 10%;
+}
+.nav .nav_visual .nav_listWrap .nav_list:hover::before {
+    left: -5rem;
+    opacity: 1;
+}
+.nav .nav_visual .nav_info {
+    align-self: flex-end;
+    margin-bottom: 20%;
+}
+.nav .nav_visual .nav_info > p {
+    width: 60%;
+    font-size: 4rem;
+    line-height: 1.5;
+}
+.nav_copy {
+    position: absolute;
+    right: 2.5rem;
+    bottom: 6.5rem;
+    color: white;
+    font-size: 3rem;
+    writing-mode: vertical-lr;
+}
+#header.navOn + .nav {
+    left: 0;
+}
 /* main */
 .section {
     padding: 16rem 0;
@@ -97,7 +270,7 @@ html, body {
 }
 .form_headTitle {
     font: 3rem "noto_B";
-    margin-bottom: 2.4rem;    
+    margin-bottom: 4.4rem;    
 }
 .form_headDesc {
     font-size: 3rem;
@@ -160,7 +333,7 @@ html, body {
     outline: none;
     border-bottom: 1px solid var(--text-color);
 }
-.form_input:focus, .form_textarea:focus {
+.form_input:focus, textarea:focus {
     outline: none;
     border: none;
     border-bottom: 1px solid var(--point-color);
@@ -234,6 +407,7 @@ html, body {
 }
 .btn_area {
     margin-top: 13.5rem;
+    display: flex;
 }
 .btn_area .btn {
     width: 38.3rem;
