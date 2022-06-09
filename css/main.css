@@ -112,7 +112,7 @@ html, body {
 }
 /* header */
 #header {
-    position: fixed;
+    position: absolute;
     top: 10%;
     display: flex;
     justify-content: space-between;
@@ -515,7 +515,7 @@ footer .f_t .f_com_info {
     display: flex;
     color: #BDBDBD;
     gap: 6.5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 3rem;
     flex-wrap: wrap;
 }
 footer .f_b .copy {

@@ -128,11 +128,11 @@
 footer {
     font-size: 1.1rem;
     height: 18rem;
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 footer .f_t .f_com_info {
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: 1rem;
+    margin-bottom: 0rem;
 }
 footer .f_t .f_com_info li:nth-child(1) {
     width: 100%;
@@ -185,4 +185,7 @@ footer .f_t .f_com_info li:nth-child(1) {
     position: absolute;
     width: 1px;
     opacity: 0;
+}
+.f_b{
+    margin-top: 3rem;
 }
